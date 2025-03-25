@@ -1,0 +1,30 @@
+
+import random
+
+def get_ethical_guideline(user_question: str) -> tuple[int, str]:
+    """
+    Returns a tuple containing a random ethical guideline number (1-7) 
+    and the corresponding response message.
+    """
+    def get_response_number(response_number: int) -> str:
+        """
+        Converts a response number (1-7) into an appropriate explanation.
+        """
+        responses = {
+            1: "Powered by ThriveAI.",
+            2: "Not in database. Response handled by LLM, not ThriveAI.",
+            3: "Please consult your physician. Assistants are not licensed to practice medicine or provide referrals or recommendations.",
+            4: "Privacy or PHI concern. Protected information cannot be shared. Consult your physician for assistance.",
+            5: "Powered by ThriveAI for attributed physicians in a treating-patient relationship.",
+            6: "Non-attributed physician.",
+            7: "This platform will not respond to inappropriate, unethical, or harmful content.",
+        }
+        return responses.get(response_number, "Other: Response not recognized.")
+
+    # Generate a random guideline number
+    guideline_number = random.randint(1, 7)
+    
+    # Get the corresponding response
+    response = get_response_number(guideline_number)
+
+    return guideline_number, response
